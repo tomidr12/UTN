@@ -1,0 +1,15 @@
+# Constantes
+
+# Medidas: 
+
+ANCHO_VENTANA = 800
+ALTO_VENTANA = 600 
+
+# Colores (rgb):
+
+COLOR_ROJO = (255, 0, 0)
+COLOR_BLANCO = (255, 255, 255)
+COLOR_GRIS = (128, 128, 128)
+COLOR_AZUL_OSCURO = (0,0,139)
+COLOR_AMARILLO = (255, 255, 0)
+COLOR_NEGRO = (0,0,0)
