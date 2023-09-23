@@ -17,33 +17,24 @@ def datos_personaje() -> str:
 
 def buscado_maxmin(lista: list, key_acomparar: str, max_o_min: str) -> list[dict]:
 
-    if max_o_min == "maximo":
-        lista_maximo = []
-        valor_maximo = None
+        lista_max_min = []
+        valor_max_min = None
 
         for heroe in lista:
-            if valor_maximo == None or (float(heroe[key_acomparar]) > float(valor_maximo[key_acomparar])):
-                valor_maximo = heroe
-
+            
+            if max_o_min == "maximo":
+                if valor_max_min == None or (float(heroe[key_acomparar]) > float(valor_max_min[key_acomparar])):
+                    valor_max_min = heroe
+                    
+            if max_o_min == 'minimo':
+                if valor_max_min == None or (float(heroe[key_acomparar]) < float(valor_max_min[key_acomparar])):
+                    valor_max_min = heroe
+                    
         for heroe in lista:
-            if float(valor_maximo[key_acomparar]) == float(heroe[key_acomparar]):
-                lista_maximo.append(heroe)
+            if float(valor_max_min[key_acomparar]) == float(heroe[key_acomparar]):
+                lista_max_min.append(heroe)
 
-        return lista_maximo
-
-    if max_o_min == 'minimo':
-        lista_minimo = []
-        valor_minimo = None
-
-        for heroe in lista:
-            if valor_minimo == None or (float(heroe[key_acomparar]) < float(valor_minimo[key_acomparar])):
-                valor_minimo = heroe
-
-        for heroe in lista:
-            if float(valor_minimo[key_acomparar]) == float(heroe[key_acomparar]):
-                lista_minimo.append(heroe)
-
-        return lista_minimo
+        return lista_max_min
 
 
 def buscador_promedio(lista: list, key_apromediar: str, condicion1: str, parametro: str) -> float:
@@ -55,7 +46,11 @@ def buscador_promedio(lista: list, key_apromediar: str, condicion1: str, paramet
             acumulador += valor
             contador += 1
 
-    promedio_valor = acumulador / contador
+    if contador == 0 or acumulador == 0:
+        return False
+    else:
+        promedio_valor = acumulador / contador
+        
     return promedio_valor
 
 
@@ -107,7 +102,12 @@ while True:
             promedio_fuerza_femenino = float(buscador_promedio(lista_personajes, "fuerza", "genero", "F"))
 
             for heroe in lista_personajes:
-                if float(heroe["fuerza"]) > promedio_fuerza_femenino:
+                if promedio_fuerza_femenino == False:
+                    
+                    print('no hay superheroes los cuales su fuerza supere la fuerza promedio de todas las superheroes de genero femenino')
+                    
+                elif float(heroe["fuerza"]) > promedio_fuerza_femenino:
+                    
                     print(f'--> {heroe["nombre"]} | {float(heroe["peso"]):0.2f}kg | {"fuerza"} : {heroe["fuerza"]} | supera el promedio de {"fuerza"} femenino')
 
         case '6':

@@ -24,20 +24,16 @@ def buscador_maxmin(lista: list, key_acomparar: str, max_o_min: str, key_paramet
         for heroe in lista:
             if heroe[key_parametro] == condicion:
                 
-                if max_o_min == "maximo":
-                    if valor == None or float(heroe[key_acomparar]) > float(valor[key_acomparar]):
+                if (max_o_min == "maximo" and (valor == None or (float(heroe[key_acomparar]) > float(valor[key_acomparar])))) or (max_o_min == "minimo" and (valor == None or float(heroe[key_acomparar]) < float(valor[key_acomparar]))):
                         valor = heroe
                         
-                elif max_o_min == "minimo":
-                    if valor == None or float(heroe[key_acomparar]) < float(valor[key_acomparar]):
-                        valor = heroe
-
         for heroe in lista:
             if heroe[key_parametro] == condicion:
                 if float(valor[key_acomparar]) == float(heroe[key_acomparar]):
                     lista_max_min.append(heroe)
 
         return lista_max_min
+
 
 def buscador_promedio(lista: list, key_apromediar: str, key_parametro: str, condicion) -> float:
     acumulador = 0

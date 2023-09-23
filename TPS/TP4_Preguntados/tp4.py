@@ -63,7 +63,7 @@ texto_btn_reinicio = fuente.render('REINICIO', True, COLOR_NEGRO)
 
 # Logo
 imagen_logo = pygame.image.load(
-    'recursos/logo.jpeg')
+    'TPS\TP4_Preguntados\Recursos\logo.jpeg')
 imagen_logo = pygame.transform.scale(imagen_logo, (200, 200))
 
 # Flag
